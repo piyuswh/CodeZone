@@ -1,0 +1,8 @@
+#output{
+    background-color: black;
+    color: white;
+    height:100px;
+    width: 1300px;
+    font-family:'Courier New', Courier, monospace;
+    resize: none;
+}
