@@ -12,6 +12,8 @@ import { useParams } from 'react-router-dom';
 const Coder = ({ onCodeChange,lang }) => {
   const {id}=useParams()
   console.log(id);
+  const [loading, setLoading] = useState(false);
+
   const [userInput, setUserInput] = useState('');
   
   const [code, setCode] = useState('// Write your code here');
@@ -34,6 +36,7 @@ const Coder = ({ onCodeChange,lang }) => {
     .catch(err => console.log('Error loading attempt', err));
   }, [id]);
   async function apiHandler(){
+    setLoading(true);
     let obj={
       lang:lang||langg,
       code,
@@ -50,6 +53,7 @@ const Coder = ({ onCodeChange,lang }) => {
       })
       let data=await response.json()
       setInfo(data)
+      setLoading(false)
     // console.log("output")
     // console.log(data);
     
@@ -82,7 +86,7 @@ const Coder = ({ onCodeChange,lang }) => {
                         setCode("public class Main{\n public static void main(String[] args)\n{\n}\n}")
 
     }
-  }, [lang]);
+  }, [lang,langg]);
 
 
 function handleChange(value){
@@ -90,13 +94,14 @@ setCode(value)
 }
 
   return (
-    <div className="min-h-screen w-full bg-zinc-700 px-4 py-6 flex flex-col gap-4">
+    <div className="h-screen w-full bg-zinc-700 bg-contain  px-4 py-6 flex flex-col gap-4 overflow-hidden">
   <h5 className="text-white text-xl font-semibold text-center">Write Your Logic in {lang?lang:'java'}</h5>
       <CodeMirror
         value={code}
-        height="500px"
+        height="300px"
         theme="dark"
         extensions={extension} 
+        style={{borderRadius:'20px',backgroundColor:'red'}}
 
         onChange={handleChange}
       />
@@ -112,8 +117,14 @@ setCode(value)
 />
 
 
-<button className='bg-red-700 hover:bg-green-600 text:black hover:text-white w-20 h-12 'style={{borderRadius:'10px'}} onClick={apiHandler}>Run</button>    
-<button className='bg-gray-200 hover:bg-yellow-500 text-black hover:text-white w-20 h-12' style={{borderRadius:'10px'}} onClick={(e)=>{setCode("")}}>Reset</button>    
+<button
+  className={`bg-red-700 hover:bg-green-600 text-black hover:text-white w-20 h-12`}
+  style={{ borderRadius: '10px', cursor: loading ? 'wait' : 'pointer' }}
+  onClick={apiHandler}
+  disabled={loading}
+>
+  {loading ? 'Running..' : 'Run'}
+</button><button className='bg-gray-200 hover:bg-yellow-500 text-black hover:text-white w-20 h-12' style={{borderRadius:'10px'}} onClick={(e)=>{setCode("")}}>Reset</button>    
 </div>
 <div className='flex justify-center '>
 

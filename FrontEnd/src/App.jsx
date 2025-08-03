@@ -4,6 +4,7 @@ import Coder from './Components/Coder';
 import History from './Components/History';
 import Login from './Components/Login';
 import ProtectedRoute from './Components/ProtectRoute';
+import Home from './Components/Home'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -43,8 +44,8 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
-        <Route path="/" element={<Login />} />
+<Route path='/' element={<Home></Home>}></Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

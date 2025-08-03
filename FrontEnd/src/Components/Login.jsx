@@ -43,14 +43,14 @@ const Login = () => {
       alert("Something Went Wrong")
   }
   return (
-    <div id="main" className='bg-blue-400 w-full min-h-screen flex flex-col p-6'>
-      <h1 className="text-4xl font-bold text-white mb- text-center">Enter Into CodeZone</h1>
-        <div className="flex-grow flex justify-center items-center">
-              <div className="bg-white p-6 shadow-lg rounded-lg border border-gray-300 flex flex-row gap-8">
+    <div id="main"  className="bg-[url('/images/246.jpg')] bg-cover bg-no-repeat bg-center w-full min-h-screen flex flex-col p-6">
+      <h1 className="text-4xl font-bold mb- text-center text-xl" style={{color:'purple'}}>Enter Into CodeZone</h1>
+        <div className=" flex-grow flex justify-center items-center h-90">
+              <div className=" w-50 flex justify-center items-center mb-30 bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/306 shadow-lg rounded-lg border border-gray-300 flex flex-row gap-8">
 
 
 
-      <div id='form' className=' min-h-90 flex flex-row gap-10 shadow-lg rounded-lg bg-white p-6 h-90 jusitfy-center border-2 border-solid border-pink '>
+      <div id='form' className='w-100  min-h-90 flex flex-row gap-10 shadow-lg rounded-lg bg-white/20 backdrop-blur rounded-xl p-6 border border-white/30e p-6 h-90 jusitfy-center border-2 border-solid border-pink '>
 
         <div id='login' className=' min-h-70 w-50 flex flex-col gap-10  items-center w-64 '>
     <h2 className="text-2xl font-bold mb-6">Login</h2>
