@@ -14,6 +14,8 @@ const langmap={
   python: 71,
 }
 router.post('/usercode',async (req,res)=>{
+    console.log(req.body);
+    
     let token=req.cookies.token
     let status=jwt.verify(token,'secret')
     let user=await userModel.findOne({email:status.email})

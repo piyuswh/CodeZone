@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import '../Stylesheets/History.css'
 import { Link } from 'react-router-dom'
+import moment from 'moment';
 const History = () => {
   const [attempts,setAttempts]=useState([])
   useEffect(()=>{
@@ -34,10 +35,10 @@ fetch("http://localhost:3000/Attempts",{
     </tr>
   </thead>
   <tbody>
-    {attempts.reverse().map((val, ind) => (
+    {[...attempts].reverse().map((val, ind) => (
       <tr key={val._id}>
         <td className='text-xl'>{ind + 1}</td>
-        <td className='text-xl'>{val.submittedAt}</td>
+<td className='text-xl'>{moment(val.submittedAt).format('DD-MM-YYYY hh:mm A')}</td>
         <td className='text-xl'>{val.status}</td>
         <td className='text-xl'><Link to={`/codezone/${val._id}`}>Code</Link></td>
       </tr>

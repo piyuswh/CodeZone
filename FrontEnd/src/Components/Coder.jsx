@@ -35,7 +35,7 @@ const Coder = ({ onCodeChange,lang }) => {
   }, [id]);
   async function apiHandler(){
     let obj={
-      lang,
+      lang:lang||langg,
       code,
       input:userInput
     }
@@ -66,7 +66,7 @@ const Coder = ({ onCodeChange,lang }) => {
       case 'cpp':
       case 'c':
         setExtension([cpp()]);
-        setCode("#include <bits/stdc++.h>\nusing namespace std;\nint main()\n{\n//Write Here\n\n}")
+        setCode("#include <bits/stdc++.h>\nusing namespace std;\nint main()\n{\n//Write Here\n\n return 0;\n}")
         break;
       case 'java':
         setExtension([java()]);
@@ -82,7 +82,7 @@ const Coder = ({ onCodeChange,lang }) => {
                         setCode("public class Main{\n public static void main(String[] args)\n{\n}\n}")
 
     }
-  }, [lang,langg]);
+  }, [lang]);
 
 
 function handleChange(value){
@@ -96,7 +96,8 @@ setCode(value)
         value={code}
         height="500px"
         theme="dark"
-        extensions={extension} // You can change to python() etc.
+        extensions={extension} 
+
         onChange={handleChange}
       />
 <div className='flex justify-center items-center gap-7 text-white text-xl'>
