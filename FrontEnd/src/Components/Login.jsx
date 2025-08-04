@@ -43,17 +43,17 @@ const Login = () => {
       alert("Something Went Wrong")
   }
   return (
-    <div id="main"  className="bg-[url('/images/246.jpg')] bg-cover bg-no-repeat bg-center w-full min-h-screen flex flex-col p-6">
-      <h1 className="text-4xl font-bold mb- text-center text-xl" style={{color:'purple'}}>Enter Into CodeZone</h1>
+<div className="bg-[url('/images/248.jpg')] bg-cover bg-center bg-no-repeat w-full min-h-screen flex flex-col p-6">
+      <h1 className="text-4xl font-bold mb- text-center text-xl bg-transparent" style={{color:'blue'}}>Enter Into CodeZone</h1>
         <div className=" flex-grow flex justify-center items-center h-90">
               <div className=" w-50 flex justify-center items-center mb-30 bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/306 shadow-lg rounded-lg border border-gray-300 flex flex-row gap-8">
 
 
 
-      <div id='form' className='w-100  min-h-90 flex flex-row gap-10 shadow-lg rounded-lg bg-white/20 backdrop-blur rounded-xl p-6 border border-white/30e p-6 h-90 jusitfy-center border-2 border-solid border-pink '>
+      <div id='form' className='z-0 w-100  min-h-90 flex flex-row gap-10 shadow-lg rounded-lg bg-white/20 backdrop-blur rounded-xl p-6 border border-white/30e p-6 h-90 jusitfy-center border-2 border-solid border-pink '>
 
         <div id='login' className=' min-h-70 w-50 flex flex-col gap-10  items-center w-64 '>
-    <h2 className="text-2xl font-bold mb-6">Login</h2>
+    <h2 className="text-2xl font-bold mb-6" style={{color:'blue'}}>Login</h2>
 
           <form onSubmit={subHandler} className='flex flex-col space-y-1  items-center' >
             <input type="email" required onChange={(e) => setObj({ ...obj, email: e.target.value })} name='email' className="bg-gray-100 border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder='Username...' /><br />
@@ -69,7 +69,7 @@ const Login = () => {
         </div>
         
         <div id='signup' className='flex justify-center items-center flex-col w-64'>
-    <h2 className="text-2xl font-bold mb-6">Sign In</h2>
+    <h2 className="text-2xl font-bold mb-6 text-white">Sign In</h2>
           <form onSubmit={logHandler} className='flex flex-col space-y-3 justify-center items-center'>
             <input type="text" name='name' required onChange={(e) => { setObj1({ ...obj1, name: e.target.value }) }}className="bg-gray-100 border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder='Username'/><br />
             <input type="email" name='email'required  onChange={(e) => { setObj1({ ...obj1, email: e.target.value }) }}className="bg-gray-100 border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder='Email'/><br />

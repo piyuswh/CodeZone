@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../Stylesheets/Navbar.css'
 import { Link } from 'react-router-dom'
 import { useNavigate,useLocation} from 'react-router-dom'
 const Navbar = ({setlang}) => {
   const navigate=useNavigate()
   const location=useLocation()
+  useEffect(() => {
+  if (location.pathname !== '/history') {
+    setlang("java");
+  }
+}, [location.pathname]);
   function navHandler(e){
     navigate('/codezone')
     
@@ -42,16 +47,21 @@ const Navbar = ({setlang}) => {
         </li>
           <button  className="ml-4 text-white bg-gray-500 px-4 py-1 rounded hover:bg-gray-800 " style={{borderRadius:'10px'}} onClick={navHandler}>Code</button>
        
-        {location.pathname!=='/history'&&(<select name="" id="lang" defaultValue="java" onChange={(e)=>setlang(e.target.value)} className='px-3'>
-  <option value="java" className='text-black' disabled hidden>Java</option>
-  <option value="cpp">C++</option>
-  <option value="cpp">C</option>
-  <option value="java">Java</option>
-  <option value="python">Python</option>
+        {location.pathname!=='/history'&&(<select
+  id="lang"
+  defaultValue="java"
+  onChange={(e) => setlang(e.target.value)}
+  className="px-3 py-2 bg-transparent text-white "
+>
+  <option value="java" hidden>Java</option>
+  <option value="cpp" className='text-black'>C++</option>
+  <option value="c" className='text-black'>C</option>
+  <option value="java" className='text-black'>Java</option>
+  <option value="python" className='text-black'>Python</option>
 </select>)}
        
       </ul>
-      <h4  className=' text-center bg-red-400 text-white w-30 mr-2 mt-2' style={{borderRadius:'8px'}} onClick={Handlelog}>Logout</h4>
+      <h6  className=' text-center bg-red-400 text-white w-10 h-10  mr-2 mt-2 cursor-pointer' style={{borderRadius:'8px'}} onClick={Handlelog}>Log out</h6>
 
     </div>
   </div>
