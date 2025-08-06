@@ -1,7 +1,41 @@
 import React, { useState } from 'react'
 import '../Stylesheets/Login.css'
 import { useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
 const Login = () => {
+  useGSAP(()=>{
+    gsap.from("#form",{
+      y:500,
+      opacity:3,
+      duration:1.5
+    })
+    gsap.from("#heading",{
+      y:-1000,
+      opacity:2,
+      scale:2,
+      duration:1.5
+
+    })
+    gsap.from("#sin h1",{
+      x:200,
+      y:200,
+      duration:0.7,
+      delay:0.3,
+      opacity:0,
+      stagger:0.5,
+    })
+    gsap.from("#lin h1",{
+      x:-200,
+      y:200,
+      duration:0.7,
+      delay:0.3,
+      opacity:0,
+      stagger:0.5
+
+    })
+  })
   const navigate = useNavigate()
   const [obj, setObj] = useState({
     email: '',
@@ -43,17 +77,31 @@ const Login = () => {
       alert("Something Went Wrong")
   }
   return (
-<div className="bg-[url('/images/248.jpg')] bg-cover bg-center bg-no-repeat w-full min-h-screen flex flex-col p-6">
-      <h1 className="text-4xl font-bold mb- text-center text-xl bg-transparent" style={{color:'blue'}}>Enter Into CodeZone</h1>
-        <div className=" flex-grow flex justify-center items-center h-90">
-              <div className=" w-50 flex justify-center items-center mb-30 bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/306 shadow-lg rounded-lg border border-gray-300 flex flex-row gap-8">
+<div className="bg-gradient-to-r from-black via-gray-900 to-black
+ w-full min-h-screen flex flex-col p-6" style={{overflow:"hidden"}}>
+  <div id='ball'></div>
+      <h1 className="text-4xl font-bold mb- text-center text-xl bg-transparent" style={{color:'white'}}
+      id='heading'>Enter Into CodeZone</h1>
+
+        <div className=" flex-grow flex gap-10 justify-evenly items-center h-90  w-100%" style={{overflow:"hidden"}}
+>
+<div className='mr-40 flex flex-col justify-center items-center text-white gap-7' id='sin'>
+  <h1 style={{ fontSize: '80px',fontFamily:'monospace' }}>L</h1>
+  <h1 style={{ fontSize: '80px' }}>O</h1>
+  <h1 style={{ fontSize: '80px' }}>G</h1>
+  <h1 style={{ fontSize: '80px' }}>I</h1>
+  <h1 style={{ fontSize: '80px' }}>N</h1>
+</div>
+
+              <div className=" w-50 flex justify-center items-center mb-30 bg-purple/20 backdrop-blur-sm rounded-xl p-6 border border-white/306 shadow-lg rounded-lg border border-gray-300 flex flex-row gap-8 " style={{overflow:"hidden"}}>
 
 
 
-      <div id='form' className='z-0 w-100  min-h-90 flex flex-row gap-10 shadow-lg rounded-lg bg-white/20 backdrop-blur rounded-xl p-6 border border-white/30e p-6 h-90 jusitfy-center border-2 border-solid border-pink '>
+      <div id='form' className='z-0 w-100  min-h-90 flex flex-row gap-10 shadow-lg rounded-lg bg-white/20 backdrop-blur rounded-xl p-6 border border-white/30e p-6 h-90 jusitfy-center border-2 border-solid border-pink ' style={{overflow:"hidden"}}
+>
 
         <div id='login' className=' min-h-70 w-50 flex flex-col gap-10  items-center w-64 '>
-    <h2 className="text-2xl font-bold mb-6" style={{color:'blue'}}>Login</h2>
+    <h2 className="text-2xl font-bold mb-6" style={{color:'white'}}>Login</h2>
 
           <form onSubmit={subHandler} className='flex flex-col space-y-1  items-center' >
             <input type="email" required onChange={(e) => setObj({ ...obj, email: e.target.value })} name='email' className="bg-gray-100 border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder='Username...' /><br />
@@ -84,7 +132,16 @@ const Login = () => {
           </form>
         </div>
       </div>
+      
               </div>
+              <div className='mr-40 flex flex-col text-white justify-center items-center gap-7' id='lin'>
+    <h1 style={{ fontSize: '80px' }}>S</h1>
+    <h1 style={{ fontSize: '80px' }}>I</h1>
+    <h1 style={{ fontSize: '80px' }}>G</h1>
+    <h1 style={{ fontSize: '80px' }}>N</h1>
+    <h1 style={{ fontSize: '80px' }}>I</h1>
+    <h1 style={{ fontSize: '80px' }}>N</h1>
+  </div>
         </div>
     </div>
   )

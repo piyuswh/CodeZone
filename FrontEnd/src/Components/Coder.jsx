@@ -7,11 +7,21 @@ import { python } from '@codemirror/lang-python';
 import '../Stylesheets/Coder.css'
 import Output from './Output'
 import { useParams } from 'react-router-dom';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
 
 
 const Coder = ({ onCodeChange,lang }) => {
+  function handlehover(){
+    gsap.to("#btn",{
+      borderColor:'limegreen',
+      duration:0.65,
+      
+    })
+
+  }
   const {id}=useParams()
-  console.log(id);
   const [loading, setLoading] = useState(false);
 
   const [userInput, setUserInput] = useState('');
@@ -33,7 +43,6 @@ const Coder = ({ onCodeChange,lang }) => {
       setCode(data.code);
       setLang(data.language); 
     })
-    .catch(err => console.log('Error loading attempt', err));
   }, [id]);
   async function apiHandler(){
     setLoading(true);
@@ -54,13 +63,10 @@ const Coder = ({ onCodeChange,lang }) => {
       let data=await response.json()
       setInfo(data)
       setLoading(false)
-    // console.log("output")
-    // console.log(data);
     
     
     }
     catch(error){
-      console.log("Execution Failed");
       
     }
   }
@@ -122,7 +128,9 @@ setCode(value)
   style={{ borderRadius: '10px', cursor: loading ? 'wait' : 'pointer' }}
   onClick={apiHandler}
   disabled={loading}
->
+  onMouseEnter={handlehover}
+  id='btn'
+> 
   {loading ? 'Running..' : 'Run'}
 </button><button className='bg-gray-200 hover:bg-yellow-500 text-black hover:text-white w-20 h-12' style={{borderRadius:'10px'}} onClick={(e)=>{setCode("")}}>Reset</button>    
 </div>

@@ -23,8 +23,7 @@ const Navbar = ({setlang}) => {
 
       navigate('/');
     } catch (err) {
-      console.error('Logout failed', err);
-    }
+return err  ;  }
 
 
 

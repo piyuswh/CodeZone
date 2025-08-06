@@ -21,7 +21,7 @@ const History = () => {
   }, []);
 
   return (
-    <div id="main" className="p-4 bg-[url('/images/240.jpg')] bg-contain text-white">
+    <div id="main" className="p-4 bg-[url('/images/240.jpg')] w-full min-h-screen bg-no-repeat bg-cover text-white">
       {
         attempts.length === 0 ?
           <h1 className="text-center">No Attempts Yet</h1>
