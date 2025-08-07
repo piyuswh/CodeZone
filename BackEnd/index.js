@@ -1,5 +1,6 @@
 const express=require("express")
 const app=express();
+require('dotenv').config()
 const axios=require('axios')
 const cors=require('cors')
 const Register=require('./Routes/Register.js')

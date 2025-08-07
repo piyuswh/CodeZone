@@ -13,7 +13,7 @@ router.post('/logindata',async (req,res)=>{
     else{
 let status=await bcrypt.compare(req.body.password,user.password)
 if(status)
-     {let token=jwt.sign({email:user.email},"secret")
+     {let token=jwt.sign({email:user.email},process.env.JWT_SECRET)
             res.cookie("token",token)
         return res.status(200).send("Login Succesfull")}
             else{

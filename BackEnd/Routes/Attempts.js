@@ -8,7 +8,7 @@ router.get('/Attempts',async (req,res)=>{
        const token=req.cookies.token
        // console.log(token);
        
-       let stat=jwt.verify(token,'secret')
+       let stat=jwt.verify(token,process.env.JWT_SECRET)
        let email=stat.email;
        let user=await userModel.findOne({email:email}).populate('codes')
            const validCodes = user.codes.filter(c => c && c._id);

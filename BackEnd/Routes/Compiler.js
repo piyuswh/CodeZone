@@ -6,7 +6,7 @@ const jwt=require('jsonwebtoken')
 const userModel=require('../Models/UserSchema')
 const codeModel=require('../Models/code')
 const JUDGE0_API = 'https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true&wait=true';
-const API_KEY = '94d4231159mshecb280bfe0b091ep1c9e7cjsn2b63e8b0caeb'; 
+const API_KEY = process.env.JUDGE0_API_KEY; 
 const langmap={
       cpp: 54,
   c: 50,
@@ -14,13 +14,13 @@ const langmap={
   python: 71,
 }
 router.post('/usercode',async (req,res)=>{
-    console.log(req.body);
+    
+    
     
     let token=req.cookies.token
-    let status=jwt.verify(token,'secret')
+    let status=jwt.verify(token,process.env.JWT_SECRET)
     let user=await userModel.findOne({email:status.email})
 let {lang,code,input}=req.body
-console.log(code);
 
 let encodedcode=Buffer.from(code).toString("base64")
 try{let response=await axios.post(JUDGE0_API,{
@@ -36,7 +36,6 @@ stdin: Buffer.from(input || '').toString('base64')
     }
 })
 let result=response.data
-console.log("Judge0 Raw Response:", result);
 
 let decodedResult = {
   stdout: result.stdout ? Buffer.from(result.stdout, 'base64').toString('utf-8') : '',
@@ -52,7 +51,6 @@ if (!srcCode || !srcCode._id) {
 }
 user.codes.push(srcCode._id)
 await user.save()
-console.log(decodedResult);
 
 res.json(decodedResult)
 }
