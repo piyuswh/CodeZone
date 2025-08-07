@@ -7,7 +7,7 @@ gsap.registerPlugin(useGSAP);
 const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const Login = () => {
-  console.log(backendUrl);
+  console.log(1);
   
   useGSAP(()=>{
     gsap.from("#form",{
