@@ -13,7 +13,7 @@ const History=require('./Routes/History.js')
 const logout=require('./Routes/Logout.js')
 const submission=require('./Routes/Submissions.js')
 app.use(cors({
-     origin: 'http://localhost:5173',  
+     origin: 'https://codezone-1-f38m.onrender.com',  
   credentials: true   
 }))
 app.use(cookieParser())
