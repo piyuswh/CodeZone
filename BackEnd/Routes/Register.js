@@ -18,7 +18,12 @@ name,password:hash,email,Role:role
         })
 
         let token=jwt.sign({email:email},process.env.JWT_SECRET)
-        res.cookie("token",token)
+ res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'None'
+});
+
         res.status(200).send("Signup Succesfully")
     })
  })
