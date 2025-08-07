@@ -44,7 +44,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-<Route path='https://codezone-8z9g.onrender.com/login' element={<Home></Home>}></Route>
+<Route path='/' element={<Home></Home>}></Route>
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
