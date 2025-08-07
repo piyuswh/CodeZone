@@ -29,9 +29,10 @@ const App = () => {
             </ProtectedRoute>
           </>} />
         <Route path="/history" element={
+          <>
           <Navbar setlang={setLanguage} />
-
           <History />
+          </>
       } />
         <Route
           path="/codezone"
