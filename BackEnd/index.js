@@ -1,6 +1,5 @@
 const express=require("express")
 const app=express();
-require('dotenv').config()
 const axios=require('axios')
 const cors=require('cors')
 const Register=require('./Routes/Register.js')
@@ -12,6 +11,7 @@ const Attempts=require('./Routes/Attempts.js')
 const History=require('./Routes/History.js')
 const logout=require('./Routes/Logout.js')
 const submission=require('./Routes/Submissions.js')
+require('dotenv').config()
 app.use(cors({
      origin: 'http://localhost:5173',  
   credentials: true   
@@ -27,6 +27,7 @@ app.use('/',Attempts)
 app.use('/',History)
 app.use('/',logout)
 app.use('/',submission)
+
 
 app.listen(3000,()=>console.log("running")
 )
