@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import '../Stylesheets/Navbar.css'
 import { Link } from 'react-router-dom'
 import { useNavigate,useLocation} from 'react-router-dom'
+const backendUrl = import.meta.env.VITE_BACKEND_URL
+
 const Navbar = ({setlang}) => {
   const navigate=useNavigate()
   const location=useLocation()
@@ -16,7 +18,7 @@ const Navbar = ({setlang}) => {
   }
   async function Handlelog(){
     try {
-      await fetch('http://localhost:3000/logout', {
+      await fetch(`${backendUrl}/logout`, {
         method: 'GET',
         credentials: 'include',
       });

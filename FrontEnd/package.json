@@ -16,6 +16,7 @@
     "@codemirror/lang-python": "^6.2.1",
     "@gsap/react": "^2.1.2",
     "@uiw/react-codemirror": "^4.24.0",
+    "dotenv": "^17.2.1",
     "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "moment": "^2.30.1",

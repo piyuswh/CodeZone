@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../Stylesheets/History.css';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const History = () => {
   const [attempts, setAttempts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/Attempts", {
+    fetch(`${backendUrl}/Attempts`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

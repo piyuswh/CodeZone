@@ -11,8 +11,11 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const Coder = ({ onCodeChange,lang }) => {
+  // console.log(process.env.VITE_BACKEND_URL);
+  
   function handlehover(){
     gsap.to("#btn",{
       borderColor:'limegreen',
@@ -31,7 +34,7 @@ const Coder = ({ onCodeChange,lang }) => {
   const [extension,setExtension]=useState([])
   const [langg,setLang]=useState('java')
    useEffect(() => {
-    fetch(`http://localhost:3000/submission/${id}`, {
+    fetch(`${backendUrl}/submission/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -53,7 +56,7 @@ const Coder = ({ onCodeChange,lang }) => {
     }
    try{
 
-     let response=await fetch("http://localhost:3000/usercode",{
+     let response=await fetch(`${backendUrl}/usercode`,{
        method:'POST',
        headers:{
          'Content-Type':'application/json'

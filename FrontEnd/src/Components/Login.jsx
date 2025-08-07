@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
+const backendUrl = import.meta.env.VITE_BACKEND_URL
+
 const Login = () => {
+  console.log(backendUrl);
+  
   useGSAP(()=>{
     gsap.from("#form",{
       y:500,
@@ -21,7 +25,7 @@ const Login = () => {
     gsap.from("#sin h1",{
       x:200,
       y:200,
-      duration:0.7,
+      duration:0.3,
       delay:0.3,
       opacity:0,
       stagger:0.5,
@@ -50,7 +54,7 @@ const Login = () => {
   })
   async function subHandler(e) {
     e.preventDefault()
-    let res = await fetch("http://localhost:3000/logindata", {
+    let res = await fetch(`${backendUrl}/logindata`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -64,7 +68,7 @@ const Login = () => {
   }
   async function logHandler(e) {
     e.preventDefault()
-    let res = await fetch("http://localhost:3000/userdata", {
+    let res = await fetch(`${backendUrl}/userdata`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

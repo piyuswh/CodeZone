@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import { Navigate } from 'react-router-dom';
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 const ProtectRoute = ({children}) => {
     const [auth,setAuth]=useState(null)
     useEffect(()=>{
-        fetch("http://localhost:3000/checkauth",{
+        fetch(`${backendUrl}/checkauth`,{
             credentials:'include'
         })
         .then(res=>res.json())

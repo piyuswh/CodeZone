@@ -5,6 +5,8 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
 const Home = () => {
+// console.log(import.meta.env.VITE_BACKEND_URL);
+
   useGSAP(()=>{
     var tl=gsap.timeline()
     tl.from("#main",{
